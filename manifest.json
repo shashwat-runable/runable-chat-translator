@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Runable Chat Translator",
+  "version": "1.0.0",
+  "description": "Translate Runable chat prose into English with Chrome's on-device translator.",
+  "minimum_chrome_version": "138",
+  "permissions": ["sidePanel", "scripting"],
+  "host_permissions": ["https://runable.com/*"],
+  "action": {
+    "default_title": "Translate Runable chat"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "panel.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://runable.com/chat/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
+  }
+}
